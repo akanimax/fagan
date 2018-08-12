@@ -7,7 +7,7 @@ The project uses package named `attn-gan-pytorch` created by me,
 which is available at https://pypi.org/project/attn-gan-pytorch/ .
 
 ## Celeba samples
-<img alt="celeba training samples" src="https://cdn-images-1.medium.com/max/1600/1*EdIa1mZjNamLkNErwIuRRQ.gif"/>
+<img alt="celeba training samples" src="https://github.com/akanimax/fagan/blob/master/samples/video_gif/output.gif"/>
 <br>
 samples generated during training of the proposed architecture 
 on the celeba dataset.
