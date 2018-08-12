@@ -26,6 +26,14 @@ def parse_arguments():
                         default="configs/fagan_1/dis.conf",
                         help="default configuration for discriminator network")
 
+    parser.add_argument("--generator_file", action="store", type=str,
+                        default=None,
+                        help="pretrained weights file for generator")
+
+    parser.add_argument("--discriminator_file", action="store", type=str,
+                        default=None,
+                        help="pretrained_weights file for discriminator")
+
     parser.add_argument("--images_dir", action="store", type=str,
                         default="data/celeba",
                         help="path for the images directory")
@@ -45,6 +53,10 @@ def parse_arguments():
     parser.add_argument("--batch_size", action="store", type=int,
                         default=32,
                         help="batch_size for training")
+
+    parser.add_argument("--start", action="store", type=int,
+                        default=4,
+                        help="starting epoch number")
 
     parser.add_argument("--num_epochs", action="store", type=int,
                         default=12,
@@ -102,6 +114,10 @@ def main(args):
     gen_conf = list(map(get_layer, gen_conf.architecture))
     generator = Generator(gen_conf, args.latent_size)
 
+    if args.generator_file is not None:
+        # load the weights into generator
+        generator.load_state_dict(th.load(args.generator_file))
+
     print("Generator Configuration: ")
     print(generator)
 
@@ -109,6 +125,10 @@ def main(args):
     dis_conf = get_config(args.discriminator_config)
     dis_conf = list(map(get_layer, dis_conf.architecture))
     discriminator = Discriminator(dis_conf)
+
+    if args.discriminator_file is not None:
+        # load the weights into discriminator
+        discriminator.load_state_dict(th.load(args.discriminator_file))
 
     print("Discriminator Configuration: ")
     print(discriminator)
@@ -136,7 +156,8 @@ def main(args):
         num_samples=64,
         sample_dir=args.sample_dir,
         save_dir=args.model_dir,
-        log_dir=args.model_dir
+        log_dir=args.model_dir,
+        start=args.start
     )
 
 
