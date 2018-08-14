@@ -46,6 +46,10 @@ def parse_arguments():
                         default="models/fagan_1",
                         help="path for saved models directory")
 
+    parser.add_argument("--loss_function", action="store", type=str,
+                        default="relativistic-hinge",
+                        help="loss function to be used: 'hinge', 'relativistic-hinge'")
+
     parser.add_argument("--latent_size", action="store", type=int,
                         default=128,
                         help="latent size for the generator")
@@ -102,7 +106,7 @@ def main(args):
     from attn_gan_pytorch.Networks import Generator, Discriminator, GAN
     from data_processing.DataLoader import FlatDirectoryImageDataset, \
         get_transform, get_data_loader
-    from attn_gan_pytorch.Losses import HingeGAN
+    from attn_gan_pytorch.Losses import HingeGAN, RelativisticAverageHingeGAN
 
     # create a data source:
     celeba_dataset = FlatDirectoryImageDataset(args.images_dir,
@@ -143,12 +147,21 @@ def main(args):
     dis_optim = th.optim.Adam(filter(lambda p: p.requires_grad, discriminator.parameters()),
                               args.d_lr, [0, 0.9])
 
+    loss_name = args.loss_function.lower()
+
+    if loss_name == "hinge":
+        loss = HingeGAN
+    elif loss_name == "relativistic-hinge":
+        loss = RelativisticAverageHingeGAN
+    else:
+        raise Exception("Unknown loss function requested")
+
     # train the GAN
     fagan.train(
         data,
         gen_optim,
         dis_optim,
-        loss_fn=HingeGAN(device, discriminator),
+        loss_fn=loss(device, discriminator),
         num_epochs=args.num_epochs,
         checkpoint_factor=args.checkpoint_factor,
         data_percentage=args.data_percentage,
