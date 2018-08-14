@@ -7,7 +7,7 @@ The project uses package named `attn-gan-pytorch` created by me,
 which is available at https://pypi.org/project/attn-gan-pytorch/ .
 
 ## Celeba samples
-<img alt="celeba training samples" src="https://cdn-images-1.medium.com/max/1600/1*EdIa1mZjNamLkNErwIuRRQ.gif"/>
+<img alt="celeba training samples" src="https://github.com/akanimax/fagan/blob/master/samples/video_gif/output.gif"/>
 <br>
 samples generated during training of the proposed architecture 
 on the celeba dataset.
@@ -93,7 +93,7 @@ and `discriminator` configurations.
 ## Other links
 medium blog -> https://medium.com/@animeshsk3/fagan-full-attention-gan-2a29227dc014
 <br>
-attn_gan_pytorch packgae -> https://pypi.org/project/attn-gan-pytorch/
+attn_gan_pytorch package -> https://pypi.org/project/attn-gan-pytorch/
 
 ## Thanks
 Please feel free to open PRs here if 
