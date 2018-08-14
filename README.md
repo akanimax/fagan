@@ -35,12 +35,28 @@ subsequent attention calculation, hence the name: Full Attention.
 </p>
 
 ## Celeba Experiment
+
+#### Hinge-Gan loss experiment
 The following diagram is the plot of the loss (Hinge-GAN) generated from
 the loss-logs obtained during training.
 
 <img alt="celeba loss plot" src="https://raw.githubusercontent.com/akanimax/fagan/master/models/fagan_1/loss.png?token=AP0oFMIwGdmijCgiIuEhCD3bhsaOzGBhks5beS4ywA%3D%3D">
 <br><br>
 
+#### Relativistic Hinge-Gan loss experiment
+Following are some of the samples obtained while training using the 
+**relativistic** `hinge-gan` loss function proposed in the paper
+<a href="https://arxiv.org/abs/1807.00734"> here</a>. 
+<br>
+<img alt="relativistic celeba training samples" src="https://github.com/akanimax/fagan/blob/master/samples/video_gif/relativistic.gif"/>
+<br>
+The training of the relativistic version is percetually better (stabler) 
+as seen from the samples gif. Refer to the following loss_plot
+for this experiment for more info.<br>
+
+<img alt="relativistic celeba loss plot" src="https://raw.githubusercontent.com/akanimax/fagan/master/models/fagan_2/loss.png">
+
+## Running the Code
 Running the training is actually very simple. 
 Just install the `attn_gan_pytorch` package using the following command
 
