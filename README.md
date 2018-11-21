@@ -44,15 +44,8 @@ the loss-logs obtained during training.
 <br><br>
 
 #### Relativistic Hinge-Gan loss experiment
-Following are some of the samples obtained while training using the 
-**relativistic** `hinge-gan` loss function proposed in the paper
-<a href="https://arxiv.org/abs/1807.00734"> here</a>. 
-<br>
-<img alt="relativistic celeba training samples" src="https://github.com/akanimax/fagan/blob/master/samples/video_gif/relativistic.gif"/>
-<br>
-The training of the relativistic version is percetually better (stabler) 
-as seen from the samples gif. Refer to the following loss_plot
-for this experiment for more info.<br>
+The training of the relativistic version is percetually better (stabler). 
+Please refer to the following loss_plot for this experiment for more info.<br>
 
 <img alt="relativistic celeba loss plot" src="https://raw.githubusercontent.com/akanimax/fagan/master/models/fagan_2/loss.png">
 
